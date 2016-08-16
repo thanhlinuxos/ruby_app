@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @person.name
+p
+  strong
+    | Mail:
+  = @person.mail
+p
+  strong
+    | Age:
+  = @person.age
+= link_to 'Edit', edit_person_path(@person)
+|  | 
+= link_to 'Back', people_path

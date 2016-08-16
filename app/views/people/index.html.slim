@@ -1,0 +1,31 @@
+p#notice
+  = notice
+h1
+  | People
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Mail
+      th
+        | Age
+      th[colspan="3"]
+  tbody
+    - @people.each do |person|
+      tr
+        td
+          = person.name
+        td
+          = person.mail
+        td
+          = person.age
+        td
+          = link_to 'Show', person
+        td
+          = link_to 'Edit', edit_person_path(person)
+        td
+          = link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Person', new_person_path
