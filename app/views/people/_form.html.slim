@@ -1,24 +1,29 @@
-= form_for(person) do |f|
-  - if person.errors.any?
-    #error_explanation
-      h2
-        = pluralize(person.errors.count, "error")
-        |  prohibited this person from being saved:
-      ul
-        - person.errors.full_messages.each do |message|
-          li
-            = message
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :mail
-    = f.text_field :mail
-  .field
-    = f.label :mail_confirmation
-    = f.text_field :mail_confirmation
-  .field
-    = f.label :age
-    = f.number_field :age
-  .actions
-    = f.submit
+.row
+  = form_for person, :html => {:class => 'form-horizontal'} do |f|
+    - if person.errors.any?
+      #error_explanation
+        h2
+          = pluralize(person.errors.count, "error")
+          |  prohibited this person from being saved:
+        ul
+          - person.errors.full_messages.each do |message|
+            li
+              = message
+    .form-group
+      = f.label :name, 'Name', class: 'control-label col-sm-2'
+      .col-sm-10
+        = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :mail, 'Mail', class: 'control-label col-sm-2'
+      .col-sm-10
+        = f.text_field :mail, class: "form-control"
+    .form-group
+      = f.label :mail_confirmation, 'Mail Confirmation', class: 'control-label col-sm-2'
+      .col-sm-10
+        = f.text_field :mail_confirmation, class: "form-control"
+    .form-group
+      = f.label :age, 'Age', class: 'control-label col-sm-2'
+      .col-sm-10
+        = f.number_field :age, class: "form-control"
+    .actions
+      = f.submit
